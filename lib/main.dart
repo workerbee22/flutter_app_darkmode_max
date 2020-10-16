@@ -1,5 +1,14 @@
+/// Flutter Dark Mode Max
+///
+/// A basic example app to show light/dark mode operation on Android and iOS
+/// TODO - See Flutter IO, add Device Info to runtime environment
+/// TODO - Add adaptive launch screen light/dark theming
+/// TODO - Add more substantial content to show light/dark theme changes to the app
+/// TODO - typical project structure
+/// TODO - System bars coloring as well in theme
+
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart'; // I am using 3.1.0 but this example used 2.0.1 so more options available in provider now
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(
