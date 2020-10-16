@@ -106,8 +106,8 @@ class ThemePickerDialog extends StatelessWidget {
           value: ThemeMode.light,
           groupValue: Provider.of<ThemeNotifier>(context).currentTheme,
           onChanged: (value) {
-            Provider.of<ThemeNotifier>(context).themeModeChange(value);
-            Navigator.pop(context);
+            Provider.of<ThemeNotifier>(context, listen: false).themeModeChange(value);
+            //Navigator.pop(context);
             print('Theme Light');
           },
         ),
@@ -117,8 +117,8 @@ class ThemePickerDialog extends StatelessWidget {
           value: ThemeMode.dark,
           groupValue: Provider.of<ThemeNotifier>(context).currentTheme,
           onChanged: (value) {
-            Provider.of<ThemeNotifier>(context).themeModeChange(value);
-            Navigator.pop(context);
+            Provider.of<ThemeNotifier>(context, listen: false).themeModeChange(value);
+            //Navigator.pop(context);
             print('Theme Dark');
           },
         ),
@@ -128,8 +128,8 @@ class ThemePickerDialog extends StatelessWidget {
           value: ThemeMode.system,
           groupValue: Provider.of<ThemeNotifier>(context).currentTheme,
           onChanged: (value) {
-            Provider.of<ThemeNotifier>(context).themeModeChange(value);
-            Navigator.pop(context);
+            Provider.of<ThemeNotifier>(context, listen: false).themeModeChange(value);
+            //Navigator.pop(context);
             print('Theme System');
           },
         ),
