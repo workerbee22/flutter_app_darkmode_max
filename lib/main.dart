@@ -1,6 +1,6 @@
 /// Flutter Dark Mode Max
 ///
-/// A basic example app to show light/dark mode operation on Android and iOS
+/// A basic example app to show light/dark mode operation on Android, iOS, iPadOS, macOS and Windows
 /// TODO - See Flutter IO, add Device Info to runtime environment
 /// TODO - Add adaptive launch screen light/dark theming
 /// TODO - Add more substantial content to show light/dark theme changes to the app
