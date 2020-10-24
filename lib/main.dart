@@ -1,13 +1,18 @@
 /// Flutter Dark Mode Max
 ///
-/// A basic example app to show light/dark mode operation on Android, iOS, iPadOS, macOS and Windows
-/// Features:
-/// - Automatically adapts Launch Screen to operating system setting for light or dark mode and different logos
+/// An example to show light/dark mode operation on Android, iOS, iPadOS, macOS and Windows
+/// Features implemented:
+/// - Launch Screen - Automatically adapts Launch Screen to operating system setting for light or dark mode
+/// - Launch Screen - Different assets based on operating system setting for light or dark mode
 /// TODO - System bars coloring as well in theme
-/// TODO -
+/// TODO - Persist theme choice by user
+/// TODO - Show operating system drawn UI elements
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'package:flutter_app_darkmode_max/screens/app.dart';
+import 'package:flutter_app_darkmode_max/models/app_state.dart';
 
 void main() {
   runApp(
@@ -24,124 +29,4 @@ void main() {
       child: MyApp(),
     ),
   );
-}
-
-/// Provider Model
-class ThemeNotifier with ChangeNotifier {
-  // Default to system theme mode to start
-  ThemeMode currentThemeMode = ThemeMode.system;
-
-  void themeModeChange(ThemeMode newThemeMode) {
-    currentThemeMode = newThemeMode;
-    notifyListeners();
-  }
-
-  get currentTheme => currentThemeMode;
-}
-
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo Dark Mode',
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
-      // Consumer looks for an ancestor Provider widget
-      // and retrieves its model (AppThemes, in this case).
-      // Then it uses that model to build widgets, and will trigger
-      // rebuilds if the model is updated.
-      themeMode: Provider.of<ThemeNotifier>(context).currentTheme,
-      //themeMode: ThemeMode.system,
-      home: MyHomePage(title: 'Flutter Demo Dark Mode'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  _asyncSimpleDialog(BuildContext context) async {
-    await showDialog<void>(
-        context: context,
-        barrierDismissible: true,
-        builder: (BuildContext context) {
-          return ThemePickerDialog();
-        });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Spacer(),
-            RaisedButton(
-              child: Text('Choose theme'),
-              onPressed: () {
-                _asyncSimpleDialog(context);
-              },
-            ),
-            Spacer(),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class ThemePickerDialog extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return SimpleDialog(
-      title: const Text('Choose theme'),
-      children: <Widget>[
-        RadioListTile(
-          title: Text('Light'),
-          controlAffinity: ListTileControlAffinity.trailing,
-          value: ThemeMode.light,
-          groupValue: Provider.of<ThemeNotifier>(context).currentTheme,
-          onChanged: (value) {
-            Provider.of<ThemeNotifier>(context, listen: false).themeModeChange(value);
-            //Navigator.pop(context);
-            print('Theme Light');
-          },
-        ),
-        RadioListTile(
-          title: Text('Dark'),
-          controlAffinity: ListTileControlAffinity.trailing,
-          value: ThemeMode.dark,
-          groupValue: Provider.of<ThemeNotifier>(context).currentTheme,
-          onChanged: (value) {
-            Provider.of<ThemeNotifier>(context, listen: false).themeModeChange(value);
-            //Navigator.pop(context);
-            print('Theme Dark');
-          },
-        ),
-        RadioListTile(
-          title: Text('System controlled'),
-          controlAffinity: ListTileControlAffinity.trailing,
-          value: ThemeMode.system,
-          groupValue: Provider.of<ThemeNotifier>(context).currentTheme,
-          onChanged: (value) {
-            Provider.of<ThemeNotifier>(context, listen: false).themeModeChange(value);
-            //Navigator.pop(context);
-            print('Theme System');
-          },
-        ),
-      ],
-    );
-  }
 }
