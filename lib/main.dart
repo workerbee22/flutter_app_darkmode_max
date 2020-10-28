@@ -6,7 +6,8 @@
 /// - Launch Screen - Different assets based on operating system setting for light or dark mode
 /// TODO - System bars coloring as well in theme
 /// TODO - Persist theme choice by user
-/// TODO - Show operating system drawn UI elements
+/// TODO - Show operating system drawn UI elements - like Share
+/// TODO - White label theme
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

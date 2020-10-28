@@ -12,39 +12,51 @@ class ThemePickerDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(
-      title: const Text('Choose theme'),
+      title: Text(
+        'Choose theme',
+        style: Theme.of(context).textTheme.headline5,
+      ),
       children: <Widget>[
         RadioListTile(
-          title: Text('Light'),
+          title: Text('Light', style: Theme.of(context).textTheme.bodyText2),
           controlAffinity: ListTileControlAffinity.trailing,
+          // If activeColor is null defaults to Theme accent color
+          //activeColor: Theme.of(context).errorColor,
           value: ThemeMode.light,
           groupValue: Provider.of<ThemeNotifier>(context).currentTheme,
           onChanged: (value) {
             Provider.of<ThemeNotifier>(context, listen: false).themeModeChange(value);
             //Navigator.pop(context);
-            print('Theme Light');
           },
         ),
         RadioListTile(
-          title: Text('Dark'),
+          title: Text(
+            'Dark',
+            style: Theme.of(context).textTheme.bodyText2,
+          ),
           controlAffinity: ListTileControlAffinity.trailing,
+          // If activeColor is null defaults to Theme accent color
+          //activeColor: Theme.of(context).errorColor,
           value: ThemeMode.dark,
           groupValue: Provider.of<ThemeNotifier>(context).currentTheme,
           onChanged: (value) {
             Provider.of<ThemeNotifier>(context, listen: false).themeModeChange(value);
             //Navigator.pop(context);
-            print('Theme Dark');
           },
         ),
         RadioListTile(
-          title: Text('System controlled'),
+          title: Text(
+            'System controlled',
+            style: Theme.of(context).textTheme.bodyText2,
+          ),
           controlAffinity: ListTileControlAffinity.trailing,
+          // If activeColor is null defaults to Theme accent color
+          //activeColor: Theme.of(context).errorColor,
           value: ThemeMode.system,
           groupValue: Provider.of<ThemeNotifier>(context).currentTheme,
           onChanged: (value) {
             Provider.of<ThemeNotifier>(context, listen: false).themeModeChange(value);
             //Navigator.pop(context);
-            print('Theme System');
           },
         ),
       ],
