@@ -4,7 +4,6 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:flutter_app_darkmode_max/resources/themes.dart';
 import 'package:flutter_app_darkmode_max/widgets/theme_picker.dart';
 import 'package:flutter_app_darkmode_max/resources/system_bars.dart';
 
@@ -44,7 +43,10 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Spacer(),
-              RaisedButton(
+              ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(Colors.orange),
+                ),
                 child: Text(
                   'Choose theme',
                   style: Theme.of(context).textTheme.bodyText1,
